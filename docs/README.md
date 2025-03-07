@@ -47,7 +47,7 @@ kubectl
 
 Instalación
 Construir la imagen de contenedor
-bashCopypodman build -t mbravov/timer-server:latest -f Containerfile .
+Copypodman build -t mbravov/timer-server:latest -f Containerfile .
 # o con Docker
 # docker build -t mbravov/timer-server:latest -f Containerfile .
 Subir la imagen al registro de contenedores
