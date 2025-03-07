@@ -47,32 +47,35 @@ kubectl
 
 Instalación
 Construir la imagen de contenedor
-Copypodman build -t mbravov/timer-server:latest -f Containerfile .
+podman build -t mbravov/timer-server:latest -f Containerfile .
 o con Docker
-ocker build -t mbravov/timer-server:latest -f Containerfile .
+$ docker build -t mbravov/timer-server:latest -f Containerfile .
 Subir la imagen al registro de contenedores
-bashCopypodman push mbravov/timer-server:latest
-o con Docker
-docker push mbravov/timer-server:latest
-Desplegar en Kubernetes
-bashCopykubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-Uso
-Una vez desplegado, puedes acceder al servicio utilizando el NodePort configurado (30008):
-bashCopycurl http://<node-ip>:30008/
-O desde dentro del clúster:
-$ curl http://timer-server-service/
-El servidor responderá con un mensaje como:
-CopyCurrent Time: 2025-03-07 16:25:30
-D
-esarrollo
-Para ejecutar la aplicación localmente durante el desarrollo:
-Instalar dependencias
-$ pip install flask
+$ podman push mbravov/timer-server:latest
+o con Docker : $docker push mbravov/timer-server:latest
 
-# Ejecutar la aplicación
+Desplegar en Kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+Uso:
+Una vez desplegado, puedes acceder al servicio utilizando el NodePort configurado (30008): curl http://<node-ip>:30008/
+O desde dentro del clúster: $ curl http://timer-server-service/
+
+El servidor responderá con un mensaje como:
+Current Time: 2025-03-07 16:25:30
+
+Desarrollo
+Para ejecutar la aplicación localmente durante el desarrollo:
+Instalar dependencias: $ pip install flask
+
+# Ejecutar la aplicación de forma normal
 $ python app.py
+
 La aplicación estará disponible en http://localhost:5000/
+
+Pero dentro del clúster Kubernetes el procedimiento es :
+
 
 Licencia
 MIT
