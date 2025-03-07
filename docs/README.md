@@ -48,12 +48,12 @@ kubectl
 Instalación
 Construir la imagen de contenedor
 Copypodman build -t mbravov/timer-server:latest -f Containerfile .
-# o con Docker
-# docker build -t mbravov/timer-server:latest -f Containerfile .
+o con Docker
+ocker build -t mbravov/timer-server:latest -f Containerfile .
 Subir la imagen al registro de contenedores
 bashCopypodman push mbravov/timer-server:latest
-# o con Docker
-# docker push mbravov/timer-server:latest
+o con Docker
+docker push mbravov/timer-server:latest
 Desplegar en Kubernetes
 bashCopykubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
@@ -61,16 +61,18 @@ Uso
 Una vez desplegado, puedes acceder al servicio utilizando el NodePort configurado (30008):
 bashCopycurl http://<node-ip>:30008/
 O desde dentro del clúster:
-bashCopycurl http://timer-server-service/
+$ curl http://timer-server-service/
 El servidor responderá con un mensaje como:
 CopyCurrent Time: 2025-03-07 16:25:30
-Desarrollo
+D
+esarrollo
 Para ejecutar la aplicación localmente durante el desarrollo:
-bashCopy# Instalar dependencias
-pip install flask
+Instalar dependencias
+$ pip install flask
 
 # Ejecutar la aplicación
-python app.py
+$ python app.py
 La aplicación estará disponible en http://localhost:5000/
+
 Licencia
 MIT
